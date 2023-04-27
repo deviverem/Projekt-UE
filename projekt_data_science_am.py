@@ -37,9 +37,6 @@ df_happiness
 
 df_happiness.info()
 
-#from google.colab import files
-#uploaded=files.upload()
-
 gdppercapita=pd.read_csv('gdp_per_capita.csv', delimiter=',')
 df_gdpwide=gdppercapita.copy()
 df_gdpwide.head(10)
@@ -140,7 +137,7 @@ df_depr_suic=df_depr_suic.astype({'population': 'Int64'})
 
 df_depr_suic['year'].min(), df_depr_suic['year'].max(), len(df_depr_suic['country'].unique())
 
-mentals=pd.read_csv('suicide-rates-vs-prevalence-of-mental-and-substance-use-disorders.csv', delimiter=',')                                  ############# nie wiem co z tym zrobić...dodać sucide rate/ 
+mentals=pd.read_csv('suicide-rates-vs-prevalence-of-mental-and-substance-use-disorders.csv', delimiter=',')                                 
 df_suic_mental=mentals.copy()
 df_suic_mental
 
@@ -175,7 +172,7 @@ index_to_drop=df_psychopathology[(df_psychopathology['male suicide rate'].isnull
 df_psychopathology.drop(index_to_drop, inplace=True)
 
 countries_to_drop=set(list(suic_bef_2018['country'])).intersection(list(suic_aft_2018['country']))       #   jest Wales i England
-index_to_drop2=df_psychopathology[((df_psychopathology['female suicide rate'].isnull())|(df_psychopathology['year']>=2018))&(df_psychopathology['country'].isin(countries_to_drop))].index      #czemu??????????
+index_to_drop2=df_psychopathology[((df_psychopathology['female suicide rate'].isnull())|(df_psychopathology['year']>=2018))&(df_psychopathology['country'].isin(countries_to_drop))].index      
 df_psychopathology.drop(index_to_drop2, inplace=True)
 
 df_psychopathology.info()
@@ -231,8 +228,6 @@ df_all.info()
 
 df_all['gdp per capita']=df_all['gdp per capita'].ffill()
 df_all.info()
-
-#---------------------------------------
 
 depr_age = pd.read_csv('prevalence-of-depression-by-age.csv', delimiter=',')
 df_depr_age=depr_age.copy()
